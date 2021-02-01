@@ -7,13 +7,19 @@ const StyledDiv = styled.div`
     min-height: 65vh;
     min-width: 15vw;
     /* max-width: 30vh; */
+    #sidebar-title {
+        padding: 2rem;
+        background-color: #85baa1;
+        border-radius: 10px;
+    }
 `
 
 function Sidebar() {
     return (
         <>
             <StyledDiv>
-                <p>Sidebar content</p>
+                <h3 id="sidebar-title">Latest secret recipes<span>🤫</span></h3>
+                
 
 
                 
