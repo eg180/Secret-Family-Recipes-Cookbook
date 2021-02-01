@@ -8,14 +8,22 @@ const StyledHeader = styled.header`
     justify-content: flex-end;
     align-items: flex-end;
 
-    background-color: #725752;
+    background-color: #fec5bb;
     min-height: 20vh;
+    #site-title {
+        align-self: center;
+        font-family: 'Beth Ellen', cursive;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+
+    }
 `
 
 function Header() {
     return (
         <>
             <StyledHeader>
+            <h1 id="site-title">Secret Family Recipes</h1>
                 <Nav />   
             </StyledHeader>
         </>

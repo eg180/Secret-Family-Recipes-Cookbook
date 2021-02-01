@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StyledNav = styled.nav`
     .links {
-        background-color: white;
+        background-color: #f1e3e4;
         padding: 1.5rem;
         margin-right: 2rem;
         border-radius: 10px;

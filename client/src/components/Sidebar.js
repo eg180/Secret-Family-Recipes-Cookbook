@@ -3,16 +3,17 @@ import styled from 'styled-components';
 
 
 const StyledDiv = styled.div`
-    background-color: #d4dfc7;
-    min-height: 80vh;
-    max-width: 30vh;
+    background-color: #d8e2dc;
+    min-height: 65vh;
+    min-width: 15vw;
+    /* max-width: 30vh; */
 `
 
 function Sidebar() {
     return (
         <>
             <StyledDiv>
-                <p>This is the sidebar</p>
+                <p>Sidebar content</p>
 
 
                 
