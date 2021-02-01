@@ -8,6 +8,7 @@ const StyledSection = styled.section`
     background-color: white;
     /* min-width: 80vh; */
     min-width: 84.21vw;
+    
     input {
         margin-bottom: 2rem;
         display: flex;
