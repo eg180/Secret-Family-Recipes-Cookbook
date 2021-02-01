@@ -10,6 +10,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import RecipeSearch from './components/RecipeSearch';
 import LandingPage from './components/LandingPage';
+import SignUp from './components/SignUp';
 import styled from 'styled-components';
 
 const StyledSection = styled.div`
@@ -24,7 +25,10 @@ function App() {
       <RecipeSearch />
       <StyledSection>
         <Sidebar />
-        <LandingPage />
+        <Switch>
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/" component={LandingPage} />
+        </Switch>
       </StyledSection>
     </div>
   );

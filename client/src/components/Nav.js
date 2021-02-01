@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledNav = styled.nav`
@@ -7,6 +8,9 @@ const StyledNav = styled.nav`
         padding: 1.5rem;
         margin-right: 2rem;
         border-radius: 10px;
+        a {
+            text-decoration: none;
+        }
     }
     
 
@@ -17,7 +21,7 @@ function Nav() {
         <>
             <StyledNav>
                 <span class="links">
-                    Sign Up
+                    <Link to={'/signup'}>Sign Up</Link>
                 </span>
                 <span class="links">
                     About
