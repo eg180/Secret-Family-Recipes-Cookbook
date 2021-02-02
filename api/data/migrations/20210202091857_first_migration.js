@@ -6,6 +6,9 @@ const tables = [
   'recipe_ingredients',
   'recipe_steps',
   'step_ingredients',
+  'tags',
+  'user_recipes',
+  'recipe_tags'
 ]
 
 const [
@@ -16,6 +19,9 @@ const [
   recipe_ingredients,
   recipe_steps,
   step_ingredients,
+  tags,
+  user_recipes,
+  recipe_tags
 ] = tables
 
 exports.up = async (knex) => {
@@ -79,7 +85,7 @@ exports.up = async (knex) => {
       recipe_steps.timestamps(false, true)
     })
     .createTable(step_ingredients, (step_ingredients) => {
-      step_ingredients.increments('step_ingredients_id')
+      step_ingredients.increments('step_ingredient_id')
       step_ingredients.integer('recipe_step_id')
         .unsigned()
         .references('step_id')
@@ -94,6 +100,45 @@ exports.up = async (knex) => {
         .onUpdate('RESTRICT')
       step_ingredients.timestamps(false, true)
     })
+    .createTable(tags, (tags) => {
+      tags.increments('tag_id')
+      tags.string('name', 128)
+    })
+    .createTable(user_recipes, (user_recipes) => {
+      user_recipes.increments('user_recipe_id')
+      user_recipes.integer('user_id')
+        .unsigned()
+        .references('user_id')
+        .inTable('users')
+        .onDelete('RESTRICT')
+        .onUpdate('RESTRICT')
+      user_recipes.integer('recipe_id')
+        .unsigned()
+        .references('recipe_id')
+        .inTable('recipes')
+        .onDelete('RESTRICT')
+        .onUpdate('RESTRICT')
+      user_recipes.timestamps(false, true)
+    })
+    .createTable(recipe_tags, (recipe_tags) => {
+      recipe_tags.increments('recipe_tag_id')
+      recipe_tags.integer('recipe_id')
+        .unsigned()
+        .notNullable()
+        .references('recipe_id')
+        .inTable('recipes')
+        .onDelete('RESTRICT')
+        .onUpdate('RESTRICT')
+      recipe_tags.integer('tag_id')
+        .unsigned()
+        .references('tag_id')
+        .inTable('tags')
+        .onDelete('RESTRICT')
+        .onUpdate('RESTRICT')
+
+
+    })
+
 
   await knex.raw(`
     CREATE OR REPLACE FUNCTION update_timestamp() RETURNS TRIGGER
