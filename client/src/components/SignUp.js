@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const StyledSection = styled.section`
@@ -17,22 +17,51 @@ const StyledSection = styled.section`
 `
 
 function SignUp() {
+    const [user, setUser] = useState({user_username: "", user_email: "", user_password: ""})
+
+    const handleChange = (e) => {
+        e.preventDefault()
+        setUser({
+            ...user,
+            [e.target.name]: [e.target.value]
+        });
+    }
+    
     return (
         <>
             <StyledSection>
+            <div>
+                {user.user_username ? user.user_username : ''}
+            </div>
+            <div>
+                {user.user_email ? user.user_email : ''}
+            </div>
+            <div>
+                {user.user_password ? user.user_password : ''}
+            </div>
                 <form>
-                    <label>Name
+                    <label>Username
                         <input
+                        type="text"
+                        name="user_username"
+                        onChange={handleChange}
                         />
                     </label>
-                    <label>Email
+                    <label>E-mail
                         <input
+                        type="email"
+                        name="user_email"
+                        onChange={handleChange}
                         />
                     </label>
                     <label>Password
                         <input
+                        type="password"
+                        name="user_password"
+                        onChange={handleChange}
                         />
                     </label>
+                    <button type="submit">Sign Up</button>
                 </form>
             </StyledSection>
         </>
