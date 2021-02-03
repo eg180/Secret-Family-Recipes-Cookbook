@@ -8,7 +8,23 @@ module.exports = {
 function getAllUserRecipes() {
 
     // should return all data relating to user_recipes
-    return db('user_recipes')
+
+    // select users.user_id, users.user_username, recipes.recipe_name, categories.category
+    // from users
+    // INNER JOIN user_recipes ON users.user_id = user_recipes.user_id
+    // INNER JOIN categories ON user_recipes.category = categories.category_id
+    // INNER JOIN recipes ON user_recipes.recipe_id = recipes.recipe_id;
+
+    return db('users')
+    .innerJoin('user_recipes', 'users.user_id', 'user_recipes.user_id')
+    .innerJoin('categories', 'user_recipes.category', 'categories.category_id')
+    .innerJoin('recipes', 'user_recipes.recipe_id', 'recipes.recipe_id')
+    .select(
+        'users.user_id',
+        'users.user_username',
+        'recipes.recipe_name',
+        'categories.category'
+    )
 }
 
 
