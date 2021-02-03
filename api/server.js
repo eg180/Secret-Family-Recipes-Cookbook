@@ -1,8 +1,8 @@
 const express = require('express');
 const helmet = require('helmet');
 
-const usersRouter = require('./data/users/users-router.js');
-const recipesRouter = require('./data/recipes/recipes-router.js');
+const usersRouter = require('./resources/users/users-router.js');
+const recipesRouter = require('./resources/recipes/recipes-router.js');
 
 const server = express();
 server.use(express.json());
