@@ -3,7 +3,7 @@ const Recipes = require("./recipes-model.js");
 
 
 router.get("/", (req, res) => {
-    Recipes.getAll()
+    Recipes.getAllUserRecipes()
     .then(recipes => {
         res.status(200).json(recipes);
     })
