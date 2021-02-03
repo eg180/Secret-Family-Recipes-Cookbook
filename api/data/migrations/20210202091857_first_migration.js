@@ -7,6 +7,8 @@ const tables = [
   'recipe_steps',
   'step_ingredients',
   'tags',
+  'categories',
+  'recipe_categories',
   'user_recipes',
   'recipe_tags'
 ]
@@ -20,6 +22,8 @@ const [
   recipe_steps,
   step_ingredients,
   tags,
+  categories,
+  recipe_categories,
   user_recipes,
   recipe_tags
 ] = tables
@@ -104,6 +108,25 @@ exports.up = async (knex) => {
       tags.increments('tag_id')
       tags.string('name', 128)
     })
+    .createTable(categories, (categories) => {
+      categories.increments('category_id')
+      categories.string('category')
+    })
+    .createTable(recipe_categories, (recipe_categories ) => {
+      recipe_categories.increments()
+      recipe_categories.integer('recipe_id')
+        .unsigned()
+        .references('recipe_id')
+        .inTable('recipes')
+        .onDelete('RESTRICT')
+        .onUpdate('RESTRICT')
+      recipe_categories.integer('category_id')
+        .unsigned()
+        .references('category_id')
+        .inTable('categories')
+        .onDelete('RESTRICT')
+        .onUpdate('RESTRICT')
+    })
     .createTable(user_recipes, (user_recipes) => {
       user_recipes.increments('user_recipe_id')
       user_recipes.integer('user_id')
@@ -112,6 +135,14 @@ exports.up = async (knex) => {
         .inTable('users')
         .onDelete('RESTRICT')
         .onUpdate('RESTRICT')
+      user_recipes.string('title', 128)
+        .notNullable()
+      user_recipes.string('source', 128)
+      user_recipes.integer('category')
+        .unsigned()
+        .references('category_id')
+        .inTable('recipe_categories')
+        .notNullable()
       user_recipes.integer('recipe_id')
         .unsigned()
         .references('recipe_id')
