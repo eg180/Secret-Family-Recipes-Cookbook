@@ -1,5 +1,6 @@
 const express = require('express');
 const helmet = require('helmet');
+// const cors = require('cors');
 
 const usersRouter = require('./resources/users/users-router.js');
 const recipesRouter = require('./resources/recipes/recipes-router.js');
@@ -9,8 +10,9 @@ server.use(express.json());
 server.use(helmet());
 
 if (process.env.NODE_ENV === 'development') {
-    const cors = require('cors')
-    server.use(cors())
+    const cors = require('cors');
+    server.use(cors());
+    console.log('using cors')
 }
 
 

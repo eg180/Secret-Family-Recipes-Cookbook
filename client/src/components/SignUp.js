@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 
 const StyledSection = styled.section`
@@ -16,8 +17,23 @@ const StyledSection = styled.section`
     }
 `
 
+
+
 function SignUp() {
     const [user, setUser] = useState({user_username: "", user_email: "", user_password: ""})
+
+    const handleSubmitForm = (e) => {
+        e.preventDefault()
+        axios.post('http://localhost:4000/api/users', {user})
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err.message)
+        })
+        
+        
+    }
 
     const handleChange = (e) => {
         e.preventDefault()
@@ -30,20 +46,12 @@ function SignUp() {
     return (
         <>
             <StyledSection>
-            <div>
-                {user.user_username ? user.user_username : ''}
-            </div>
-            <div>
-                {user.user_email ? user.user_email : ''}
-            </div>
-            <div>
-                {user.user_password ? user.user_password : ''}
-            </div>
-                <form>
+                <form onSubmit={handleSubmitForm}>
                     <label>Username
                         <input
                         type="text"
                         name="user_username"
+                        autoComplete="off"
                         onChange={handleChange}
                         />
                     </label>
@@ -61,7 +69,7 @@ function SignUp() {
                         onChange={handleChange}
                         />
                     </label>
-                    <button type="submit">Sign Up</button>
+                    <button>Sign Up</button>
                 </form>
             </StyledSection>
         </>
