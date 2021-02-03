@@ -6,6 +6,7 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex('recipes').insert([
         {
+          recipe_id: 1,
           recipe_name: 'ratatouille'
         }
       ]);
