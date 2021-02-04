@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Nav from "./Nav.js";
 
@@ -15,6 +16,10 @@ const StyledHeader = styled.header`
         font-family: 'Beth Ellen', cursive;
         font-size: 3rem;
         margin-bottom: 1rem;
+        a {
+            text-decoration: none;
+            color: #370617;
+        }
 
     }
 `
@@ -24,7 +29,7 @@ function Header() {
     return (
         <>
             <StyledHeader>
-            <h1 id="site-title">Secret Family Recipes</h1>
+            <h1 id="site-title"><Link to={'/'}>Secret Family Recipes</Link></h1>
                 <Nav />  
             </StyledHeader>
         </>

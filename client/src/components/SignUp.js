@@ -9,7 +9,7 @@ const StyledSection = styled.section`
     justify-content: space-around;
     background-color: white;
     /* min-width: 80vh; */
-    min-width: 84.21vw;
+    min-width: 60vw;
     
     input {
         margin-bottom: 2rem;
@@ -75,7 +75,6 @@ function SignUp() {
                     </label>
                     <button>Sign Up</button>
                 </form>
-                <div><Link to={"/welcome"}>Back home</Link></div>
             </StyledSection>
         </>
     )

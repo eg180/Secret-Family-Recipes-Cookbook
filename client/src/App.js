@@ -16,6 +16,8 @@ import SignInBox from './components/SignInBox';
 import SignUp from './components/SignUp';
 import styled from 'styled-components';
 
+import { UserContext } from './contexts/UserContext';
+
 const StyledSection = styled.div`
   display: flex;
   min-width: 100vh;
@@ -25,6 +27,7 @@ const StyledSection = styled.div`
 function App() {
 
   const [hideSignIn, setHideSignIn] = useState(false);
+  const [fromApp, setFromApp] = useState('herp')
 
   useEffect(() => {
     // check to see if user in localstorage to see what components to hide/show
@@ -44,9 +47,11 @@ function App() {
       <StyledSection>
         <Sidebar />
         <Switch>
-          <Route path="/signup" component={SignUp} />
-          <Route path="/welcome" component={Welcome} />
           <Route exact path="/" component={LandingPage} />
+          <Route path="/signup" component={SignUp} />
+          <UserContext.Provider value={fromApp}>
+            <Route path="/welcome" component={Welcome} />
+          </UserContext.Provider>
         </Switch>
       <SideBarRight />
       </StyledSection>

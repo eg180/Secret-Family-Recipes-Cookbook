@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { UserContext } from "../contexts/UserContext";
 import styled from 'styled-components';
 
 const PageContainer = styled.div`
@@ -15,6 +16,7 @@ const StyledWelcomeDiv = styled.div`
 
 export default function Welcome() {
     // const [userToGreet, setUserToGreet] = useState(current_user: );
+    const contextVariable = useContext(UserContext);
     const [currentUser, setCurrentUser] = useState();
 
     useEffect(() => {
@@ -32,7 +34,7 @@ export default function Welcome() {
                 <h1>Welcome, {currentUser && currentUser}!</h1>
             </StyledWelcomeDiv>
             <div>
-                <h2>Content here</h2>
+                <h2>{contextVariable ? contextVariable : "nothing fromApp"}</h2>
             </div>
 
         </PageContainer>
