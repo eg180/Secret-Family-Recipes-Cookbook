@@ -3,6 +3,21 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 
+const PageContainerDiv = styled.div`
+    .sub-text {
+        background-color: #e2d4ba;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 5rem;
+        padding-bottom: .5rem;
+        font-size: .9rem;
+    }
+    #sign-up {
+        color: #85baa1;
+        padding-left: .75rem;
+    }
+`
+
 const StyledDiv = styled.div`
     display: flex;
     justify-content: flex-end;
@@ -31,7 +46,8 @@ const StyledButton = styled.button`
 `
 
 export default function SignInBox() {
-
+    
+    
     let history = useHistory()
 
     const [assumedUser, setAssumedUser] = useState({user_username: "", user_password: ""})
@@ -70,26 +86,32 @@ export default function SignInBox() {
 
 
     return (
-        <StyledDiv>
-            <form onSubmit={handleSubmitForm} autoComplete="off">
-                <label>
-                    <input
-                    type="text"
-                    placeholder="username"
-                    name="user_username"
-                    onChange={handleChange}
-                    />
-                </label>
-                <label>
-                    <input
-                    type="password"
-                    placeholder="password"
-                    name="user_password"
-                    onChange={handleChange}
-                    />
-                </label>
-                <StyledButton>Log In</StyledButton>
-            </form>
-        </StyledDiv>
+        <PageContainerDiv>
+            <StyledDiv>
+                <form onSubmit={handleSubmitForm} autoComplete="off">
+                    <label>
+                        <input
+                        type="text"
+                        placeholder="username"
+                        name="user_username"
+                        onChange={handleChange}
+                        />
+                    </label>
+                    <label>
+                        <input
+                        type="password"
+                        placeholder="password"
+                        name="user_password"
+                        onChange={handleChange}
+                        />
+                    </label>
+                    <StyledButton>Log In</StyledButton>
+                </form>
+                
+
+            </StyledDiv>
+            <div className="sub-text">Need an account? <span id="sign-up">Sign Up</span></div>
+
+        </PageContainerDiv>
     )
 }

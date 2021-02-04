@@ -31,14 +31,16 @@ function App() {
     if (window.localStorage.getItem('user_username')) {
       console.log('there is user info saved in local storage / user logged in, so to speak')
       setHideSignIn(true)
+    } else {
+      console.log('no local storage found')
     }
   }, []);
 
   return (
     <div className="App">
       <Header />
-      <RecipeSearch />
-      {!hideSignIn && <SignInBox />}
+      {hideSignIn && <RecipeSearch />}
+      {hideSignIn ? '' : <SignInBox />}
       <StyledSection>
         <Sidebar />
         <Switch>

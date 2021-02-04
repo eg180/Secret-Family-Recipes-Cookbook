@@ -6,7 +6,7 @@ const StyledSection = styled.section`
     justify-content: space-around;
     background-color: white;
     /* min-width: 80vh; */
-    min-width: 84.21vw;
+    max-width: 70vw;
     .ad {
         margin: 2rem;
         border-radius: 10px;

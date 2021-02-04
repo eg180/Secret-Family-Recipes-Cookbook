@@ -33,12 +33,12 @@ function Nav() {
     return (
         <>
             <StyledNav>
-                <span class="links">
+                {/*<span class="links">
                     {!hideSignIn ? <Link to={'/signup'}>Sign Up</Link> : <Link to={'/logout'}>Log Out</Link>}
                 </span>
                 <span class="links">
                     About
-                </span>
+                </span>*/}
                 
                 
             </StyledNav>
