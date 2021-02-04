@@ -33,7 +33,7 @@ async function registerUser(user) {
 }
 
 function findBy(filter) {
-    return db("users").where(filter).orderBy("user_id");
+    return db("users").where(filter).orderBy("user_id").first();
 }
 
 function findByUserId(user_id) {
