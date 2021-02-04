@@ -39,7 +39,7 @@ function SignUp() {
         e.preventDefault()
         setUser({
             ...user,
-            [e.target.name]: [e.target.value]
+            [e.target.name]: e.target.value
         });
     }
     

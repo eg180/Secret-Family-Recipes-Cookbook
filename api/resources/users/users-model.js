@@ -23,6 +23,7 @@ module.exports = {
 
 async function registerUser(user) {
     try {
+        // await console.log(user)
         const [user_id] = await db('users').insert(user, 'user_id');
         return findByUserId(user_id)
     } catch (error) {

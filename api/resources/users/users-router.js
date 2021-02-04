@@ -23,7 +23,7 @@ router.post("/", (req, res) => {
     // } catch (error) {
     //     res.status(400).json({ message: error.message })
     // }
-    let user = req.body;
+    let { user } = req.body;
 
     Users.registerUser(user)
     .then(newUser => {
