@@ -10,6 +10,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import RecipeSearch from './components/RecipeSearch';
 import LandingPage from './components/LandingPage';
+import SignInBox from './components/SignInBox';
 import SignUp from './components/SignUp';
 import styled from 'styled-components';
 
@@ -23,6 +24,7 @@ function App() {
     <div className="App">
       <Header />
       <RecipeSearch />
+      <SignInBox />
       <StyledSection>
         <Sidebar />
         <Switch>

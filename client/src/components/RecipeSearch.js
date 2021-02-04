@@ -30,6 +30,7 @@ function RecipeSearch() {
                 <span class="marquee">Find your recipe</span>
 
             </div>
+            
             <div>
                 <span id="search">Find your recipe</span>
                 <input
