@@ -10,6 +10,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import RecipeSearch from './components/RecipeSearch';
 import LandingPage from './components/LandingPage';
+import Welcome from './components/Welcome';
 import SignInBox from './components/SignInBox';
 import SignUp from './components/SignUp';
 import styled from 'styled-components';
@@ -28,7 +29,8 @@ function App() {
       <StyledSection>
         <Sidebar />
         <Switch>
-          <Route exact path="/signup" component={SignUp} />
+          <Route path="/signup" component={SignUp} />
+          <Route path="/welcome" component={Welcome} />
           <Route exact path="/" component={LandingPage} />
         </Switch>
       </StyledSection>

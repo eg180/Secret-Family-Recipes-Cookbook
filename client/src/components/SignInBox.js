@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -31,6 +32,8 @@ const StyledButton = styled.button`
 
 export default function SignInBox() {
 
+    let history = useHistory()
+
     const [assumedUser, setAssumedUser] = useState({user_username: "", user_password: ""})
 
 
@@ -50,6 +53,11 @@ export default function SignInBox() {
         axios.post('http://localhost:4000/api/auth/login', assumedUser)
         .then(res => {
             console.log(res)
+            // allows us to access username for the session
+            window.localStorage.setItem('user_username', res.data.user_username)
+            history.push('/welcome');
+            
+            //wait with timeout
             // later, set this up to put to welcome ou quoi que ce soit
         })
         .catch(err => {
