@@ -47,7 +47,7 @@ export default function SignInBox() {
         console.log('sending this to login endpoint:')
         console.log(assumedUser)
 
-        axios.post('http://localhost:4000/api/auth/login', {assumedUser})
+        axios.post('http://localhost:4000/api/auth/login', assumedUser)
         .then(res => {
             console.log(res)
             // later, set this up to put to welcome ou quoi que ce soit
