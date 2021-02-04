@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
+import SideBarRight from './components/SideBarRight';
 import RecipeSearch from './components/RecipeSearch';
 import LandingPage from './components/LandingPage';
 import Welcome from './components/Welcome';
@@ -33,6 +34,7 @@ function App() {
           <Route path="/welcome" component={Welcome} />
           <Route exact path="/" component={LandingPage} />
         </Switch>
+      <SideBarRight />
       </StyledSection>
     </div>
   );
