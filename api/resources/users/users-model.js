@@ -2,6 +2,7 @@ const db = require('../../data/dbConfig.js');
 
 module.exports = {
     registerUser,
+    findBy,
     findByUserId
 }
 
@@ -29,6 +30,10 @@ async function registerUser(user) {
     } catch (error) {
         return error;
     }
+}
+
+function findBy(filter) {
+    return db("users").where(filter).orderBy("user_id");
 }
 
 function findByUserId(user_id) {

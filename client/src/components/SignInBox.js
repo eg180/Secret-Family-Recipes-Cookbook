@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 
 const StyledDiv = styled.div`
@@ -43,7 +44,19 @@ export default function SignInBox() {
     
     const handleSubmitForm = (e) => {
         e.preventDefault()
+        console.log('sending this to login endpoint:')
         console.log(assumedUser)
+
+        axios.post('http://localhost:4000/api/auth/login', {assumedUser})
+        .then(res => {
+            console.log(res)
+            // later, set this up to put to welcome ou quoi que ce soit
+        })
+        .catch(err => {
+            console.log(err.message)
+        })
+
+
     }
 
 

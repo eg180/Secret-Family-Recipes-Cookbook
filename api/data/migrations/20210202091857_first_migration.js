@@ -33,7 +33,9 @@ exports.up = async (knex) => {
     .createTable(users, (users) => {
       users.increments('user_id')
       users.string('user_username', 256).notNullable()
+        .unique()
       users.string('user_email', 256).notNullable()
+        .unique()
       users.string('user_password', 128).notNullable()
       users.timestamps(false, true)
     })
