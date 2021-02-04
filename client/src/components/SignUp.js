@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -20,6 +21,9 @@ const StyledSection = styled.section`
 
 
 function SignUp() {
+    
+    let history = useHistory();
+
     const [user, setUser] = useState({user_username: "", user_email: "", user_password: ""})
 
     const handleSubmitForm = (e) => {
@@ -27,6 +31,7 @@ function SignUp() {
         axios.post('http://localhost:4000/api/users', {user})
         .then(res => {
             console.log(res)
+            history.push("/welcome")
         })
         .catch(err => {
             console.log(err.message)
@@ -46,12 +51,11 @@ function SignUp() {
     return (
         <>
             <StyledSection>
-                <form onSubmit={handleSubmitForm}>
+                <form onSubmit={handleSubmitForm} autoComplete="off">
                     <label>Username
                         <input
                         type="text"
                         name="user_username"
-                        autoComplete="off"
                         onChange={handleChange}
                         />
                     </label>
