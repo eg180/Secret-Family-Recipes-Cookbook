@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -75,6 +75,7 @@ function SignUp() {
                     </label>
                     <button>Sign Up</button>
                 </form>
+                <div><Link to={"/welcome"}>Back home</Link></div>
             </StyledSection>
         </>
     )

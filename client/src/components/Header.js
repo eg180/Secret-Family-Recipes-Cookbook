@@ -20,11 +20,12 @@ const StyledHeader = styled.header`
 `
 
 function Header() {
+
     return (
         <>
             <StyledHeader>
             <h1 id="site-title">Secret Family Recipes</h1>
-                <Nav />   
+                <Nav />  
             </StyledHeader>
         </>
     )

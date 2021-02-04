@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
 import {
   Switch,
@@ -21,12 +21,24 @@ const StyledSection = styled.div`
   min-width: 100vh;
 `
 
+
 function App() {
+
+  const [hideSignIn, setHideSignIn] = useState(false);
+
+  useEffect(() => {
+    // check to see if user in localstorage to see what components to hide/show
+    if (window.localStorage.getItem('user_username')) {
+      console.log('there is user info saved in local storage / user logged in, so to speak')
+      setHideSignIn(true)
+    }
+  }, []);
+
   return (
     <div className="App">
       <Header />
       <RecipeSearch />
-      <SignInBox />
+      {!hideSignIn && <SignInBox />}
       <StyledSection>
         <Sidebar />
         <Switch>

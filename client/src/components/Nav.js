@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -17,11 +17,24 @@ const StyledNav = styled.nav`
 `
 
 function Nav() {
+
+  const [hideSignIn, setHideSignIn] = useState(false);
+
+  useEffect(() => {
+    // check to see if user in localstorage to see what components to hide/show
+    if (window.localStorage.getItem('user_username')) {
+      console.log('there is user info saved in local storage / user logged in, so to speak')
+      setHideSignIn(true)
+    }
+  }, []);
+
+
+
     return (
         <>
             <StyledNav>
                 <span class="links">
-                    <Link to={'/signup'}>Sign Up</Link>
+                    {!hideSignIn ? <Link to={'/signup'}>Sign Up</Link> : <Link to={'/logout'}>Log Out</Link>}
                 </span>
                 <span class="links">
                     About
