@@ -70,6 +70,13 @@ export default function SignInBox(props) {
 
 
     }
+
+
+    const setUserInLocalStorage = async (res) => {
+        const visitingUser = await window.localStorage.setItem('user_username', res.data.allegedUser.user_username)
+        updateSignedInUserInApp(res.data.allegedUser.user_username)
+        history.push('/welcome');
+    }
     
     const handleSubmitForm = (e) => {
         e.preventDefault()
@@ -78,12 +85,8 @@ export default function SignInBox(props) {
 
         axios.post('http://localhost:4000/api/auth/login', assumedUser)
         .then(res => {
-            console.log('got this res back:')
-            console.log(res)
             // allows us to access username for the session
-            // window.localStorage.setItem('user_username', res.data.user_username)
-            updateSignedInUserInApp(res.data.user_username)
-            history.push('/welcome');
+            setUserInLocalStorage(res)
             
             //wait with timeout
             // later, set this up to put to welcome ou quoi que ce soit
