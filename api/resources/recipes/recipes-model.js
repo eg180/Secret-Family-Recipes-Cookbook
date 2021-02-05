@@ -1,6 +1,7 @@
 const db = require('../../data/dbConfig.js');
 
 module.exports = {
+    findRecipeByName,
     getAllUserRecipes,
     getRecipeById,
     getIngredientsInDb,
@@ -48,6 +49,10 @@ function getUnits() {
     .select(
         'unit'
     )
+}
+
+function findRecipeByName(searchTerm) {
+    return db('recipes').where('recipe_name', 'like', `%${searchTerm}%`)
 }
 
 

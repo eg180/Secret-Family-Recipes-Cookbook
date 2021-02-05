@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 import styled from 'styled-components';
 import RecipeDialog from './RecipeDialog';
 
@@ -36,10 +38,39 @@ const StyledDiv = styled.div`
 
 function RecipeSearch() {
 
+    let history = useHistory()
+
+    const [searchTerm, setSearchTerm] = useState({recipe_name: ""});
+
     const [clicked, setClicked] = useState(false)
 
     const toggleDialog = () => {
         setClicked(!clicked)
+    }
+
+    const searchDbForRecipe = (e) => {
+        e.preventDefault()
+        console.log('search term endpoint', searchTerm)
+        axios.post('http://localhost:4000/api/recipes/search', searchTerm)
+        .then(res => {
+            console.log('res recived in recipe search. look inside res.data')
+            console.log(res)
+            history.push("/searchresults")
+
+        })
+        .catch(err => {
+            console.log(err.message)
+        })
+        
+    }
+
+    const handleSearchChange = (e) => {
+        e.preventDefault()
+        setSearchTerm({
+            ...searchTerm,
+            [e.target.name]: e.target.value
+        })
+
     }
 
 
@@ -52,9 +83,17 @@ function RecipeSearch() {
                     <span class="marquee">Random Recipe</span>
                 </div>
                 <div>
-                    <span id="search">Find your recipe</span>
-                    <input
-                    />
+                    
+                    <form onSubmit={searchDbForRecipe}>
+                        <span id="search">Find a recipe</span>
+                        <input
+                        type="text"
+                        name="recipe_name"
+                        placeholder="Whatcha hungry for?"
+                        onChange={handleSearchChange}
+                        />
+                        <button>Search</button>
+                    </form>
                 </div>
                 <div>
                     <span id="plus" onClick={toggleDialog}>{!clicked ? 'ADD recipe' : 'cancel'}</span>

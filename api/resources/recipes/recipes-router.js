@@ -33,6 +33,20 @@ router.get("/units", (req, res) => {
 });
 
 
+router.post("/search", (req, res) => {
+    const { recipe_name } = req.body;
+    console.log(recipe_name)
+
+    Recipes.findRecipeByName(recipe_name)
+    .then(recipes => {
+        res.status(200).json(recipes);
+    })
+    .catch(err => {
+        res.status(500).json(err.message);
+    });
+});
+
+
 
 
 

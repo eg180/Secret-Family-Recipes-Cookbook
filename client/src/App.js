@@ -6,6 +6,7 @@ import {
   Link,
   useParams
 } from "react-router-dom";
+import styled from 'styled-components';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import SignOutBar from './components/SignOutBar';
@@ -15,7 +16,8 @@ import LandingPage from './components/LandingPage';
 import Welcome from './components/Welcome';
 import SignInBox from './components/SignInBox';
 import SignUp from './components/SignUp';
-import styled from 'styled-components';
+import SearchResults from './components/SearchResults';
+
 
 import { UserContext } from './contexts/UserContext';
 
@@ -63,9 +65,11 @@ function App() {
       <StyledSection>
         <Sidebar />
         <Switch>
-          {<Route exact path="/" component={LandingPage} />}
+          {<Route exact path="/" component={signedInUser ? Welcome : LandingPage} />}
           <Route path="/signup" component={SignUp} />
           <Route path="/welcome" component={Welcome} />
+          <Route path="/searchresults" component={SearchResults} />
+
         </Switch>
         <SideBarRight />
       </StyledSection>
