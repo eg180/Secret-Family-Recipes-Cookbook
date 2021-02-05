@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const StyledStepOptionsSection = styled.section`
@@ -21,6 +21,9 @@ const StyledStepOptionsSection = styled.section`
 `
 
 export default function StepOptions(props) {
+
+    const [step, setStep] = useState()
+
     const { dbIngredients, dbUnits } = props;
     return (
 
@@ -64,6 +67,7 @@ export default function StepOptions(props) {
                     <div><span id="cancel">❌</span></div>
                     <div><span id="add">✅</span></div>
                 </div>
+                    <div>SAVE</div>
             </StyledStepOptionsSection>
 
         </>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import StepOptions from './StepOptions';
+// import StepOptions from './StepOptions';
+import RecipeStep from './RecipeStep'
 
 
 const PageContainerDiv = styled.div`
@@ -75,7 +76,6 @@ export default function RecipeDialog() {
     },[])
 
     const [dbIngredients, setDbIngredients] = useState();
-    const [dbQuantities, setDbQuantities] = useState();
     const [dbUnits, setDbUnits] = useState();
 
 
@@ -93,7 +93,7 @@ export default function RecipeDialog() {
     // store categories and info from db in step options
 
     const [newRecipe, setNewRecipe] = useState();
-    const [step, setStep] = useState(1);
+
 
     return (
         <>
@@ -107,16 +107,9 @@ export default function RecipeDialog() {
                             name="recipe_name"
                             />
                         </label>
-                        <label> <h2>Step {step} </h2>
-                            <textarea
-                            placeholder="step instructions"
-                            rows="4"
-                            cols="50"
-                            />
-                        </label>
                     </form>
                 </StyledDialogDiv>
-                <StepOptions dbIngredients={dbIngredients} dbUnits={dbUnits} /> 
+                <RecipeStep dbUnits={dbUnits} dbIngredients={dbIngredients} />
             </PageContainerDiv>
         </>
     )
