@@ -63,7 +63,7 @@ function App() {
       <StyledSection>
         <Sidebar />
         <Switch>
-          <Route exact path="/" component={LandingPage} />
+          {<Route exact path="/" component={LandingPage} />}
           <Route path="/signup" component={SignUp} />
           <Route path="/welcome" component={Welcome} />
         </Switch>

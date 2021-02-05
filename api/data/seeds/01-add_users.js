@@ -10,6 +10,12 @@ exports.seed = function(knex) {
           user_email: 'fakeemail@jenesaispas.com',
           user_role: 1,
           user_password: 'password'
+        },
+        {
+          user_username: 'no-thing',
+          user_email: 'delphy@jenesaispas.com',
+          user_role: 2,
+          user_password: 'password'
         }
       ]);
     });

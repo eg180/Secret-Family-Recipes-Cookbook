@@ -10,7 +10,8 @@ exports.seed = function(knex) {
         {category: 'Lunch'},
         {category: 'Dinner'},
         {category: 'Dessert'},
-        {category: 'Sides'}
+        {category: 'Sides'},
+        {category: 'Snack'}
       ]);
     });
 };

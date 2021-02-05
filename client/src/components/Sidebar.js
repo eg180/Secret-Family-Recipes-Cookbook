@@ -10,7 +10,7 @@ const StyledDiv = styled.div`
     #sidebar-title {
         padding: 2rem;
         background-color: #85baa1;
-        border-radius: 10px;
+        /* border-radius: 10px; */
     }
 `
 
