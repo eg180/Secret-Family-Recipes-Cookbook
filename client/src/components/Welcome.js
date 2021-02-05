@@ -11,7 +11,7 @@ const PageContainer = styled.div`
     align-items: center;
 `
 
-const StyledWelcomeDiv = styled.div`
+const StyledWelcomeSection = styled.section`
     background-color: #a0c4ff;
 `
 
@@ -32,12 +32,12 @@ export default function Welcome() {
     return (
         <PageContainer>
 
-            <StyledWelcomeDiv>
+            <StyledWelcomeSection>
                 <h1>Welcome, {signedInUser && signedInUser}!</h1>
                 <ul><h2><Link to={'/signup'}>Test links - goes to sign in</Link></h2>
                     <li></li>
                 </ul>
-            </StyledWelcomeDiv>
+            </StyledWelcomeSection>
 
         </PageContainer>
     )
