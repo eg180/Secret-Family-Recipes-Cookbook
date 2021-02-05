@@ -1,9 +1,26 @@
 const router = require("express").Router();
 const Users = require("../resources/users/users-model.js");
+const restricted = require("./restricted-middleware.js"); 
 const jwt = require('jsonwebtoken');
 // const bcrypt = require("bcryptjs");
+// router.use(restricted);
 
-
+router.get("/users", restricted, (req, res) => {
+    Users.getAll()
+    .then(users => {
+        res.status(200).json(users)
+    })
+    .catch(err => {
+        res.status(401).json({ message: err.error })
+    })
+    // Users.getAll()
+    // .then(users => {
+    //     res.status(200).json(users);
+    // })
+    // .catch(err => {
+    //     res.status(500).json(err.message);
+    // });
+});
 
 router.post("/login", async (req, res) => {
     const {user_username, user_password } = req.body;
@@ -36,7 +53,7 @@ function makeJwt(user) {
     const secret = process.env.JWT_SECRET || 'shh'
 
     const options = {
-        expiresIn: "15000"
+        expiresIn: "1h"
     }
 
     return jwt.sign(payload, secret, options)

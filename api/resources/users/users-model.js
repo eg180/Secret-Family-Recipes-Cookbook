@@ -3,7 +3,8 @@ const db = require('../../data/dbConfig.js');
 module.exports = {
     registerUser,
     findBy,
-    findByUserId
+    findByUserId,
+    getAll
 }
 
 // async function registerUser(user) {
@@ -22,10 +23,14 @@ module.exports = {
 //     }
 // }
 
+function getAll() {
+    return db("users").orderBy("user_id");
+}
+
 async function registerUser(user) {
     try {
         // await console.log(user)
-        const [user_id] = await db('users').insert(user, 'user_id');
+        const [user_id] = await db("users").insert(user, "user_id");
         return findByUserId(user_id)
     } catch (error) {
         return error;

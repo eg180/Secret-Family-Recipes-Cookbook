@@ -24,12 +24,14 @@ function SignUp() {
     
     let history = useHistory();
 
-    const [user, setUser] = useState({user_username: "", user_email: "", user_password: ""})
+    const [user, setUser] = useState({user_username: "", user_email: "", user_role: 2, user_password: ""})
 
     const handleSubmitForm = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:4000/api/users', {user})
+        console.log('user being sent to endpoint', user)
+        axios.post('http://localhost:4000/api/users/register', {user})
         .then(res => {
+            console.log('below is the res before sending to welcome')
             console.log(res)
             history.push("/welcome")
         })
