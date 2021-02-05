@@ -38,6 +38,7 @@ const StyledDiv = styled.div`
 
 function RecipeSearch() {
 
+
     let history = useHistory()
 
     const [searchTerm, setSearchTerm] = useState({recipe_name: ""});
@@ -54,6 +55,7 @@ function RecipeSearch() {
         axios.post('http://localhost:4000/api/recipes/search', searchTerm)
         .then(res => {
             console.log('res recived in recipe search. look inside res.data')
+            window.localStorage.setItem('searchRes', res.data)
             console.log(res)
             history.push("/searchresults")
 
