@@ -2,7 +2,10 @@ const db = require('../../data/dbConfig.js');
 
 module.exports = {
     getAllUserRecipes,
-    getRecipeById
+    getRecipeById,
+    getIngredientsInDb,
+    getUnits
+
 }
 
 function getAllUserRecipes() {
@@ -30,6 +33,21 @@ function getAllUserRecipes() {
 
 function getRecipeById(user_id) {
     return getAllUserRecipes().where('q.recipe_id', user_id)
+}
+
+function getIngredientsInDb() {
+    return db('ingredients')
+    .select(
+        'ingredient_name'
+    )
+}
+
+
+function getUnits() {
+    return db('units')
+    .select(
+        'unit'
+    )
 }
 
 

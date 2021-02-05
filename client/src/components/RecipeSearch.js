@@ -21,14 +21,14 @@ const StyledDiv = styled.div`
     .marquee {
     }
     #plus {
-        background-color: #caffbf;
-        color: white;
+        background-color: #80ffdb;
+        color: #4d194d;
         border-color: purple;
         padding: .25rem;
         margin: .50rem;
-        border-radius: 20%;
+        border-radius: 10px;
         :hover {
-            background-color: #80ffdb;
+            background-color: #caffbf;
             cursor: pointer;
         }
     }
@@ -57,11 +57,11 @@ function RecipeSearch() {
                     />
                 </div>
                 <div>
-                    <span class="marquee">Add a recipe</span><span id="plus" onClick={toggleDialog}>➕</span>
+                    <span id="plus" onClick={toggleDialog}>{!clicked ? 'ADD recipe' : 'cancel'}</span>
                 </div>      
             </StyledDiv>
             <div>
-                {clicked && <RecipeDialog />}
+                {clicked && <RecipeDialog clicked={clicked} />}
             </div>
 
         </>

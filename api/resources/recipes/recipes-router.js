@@ -12,6 +12,27 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/ingredients", (req, res) => {
+    Recipes.getIngredientsInDb()
+    .then(ingredients => {
+        res.status(200).json(ingredients);
+    })
+    .catch(err => {
+        res.status(500).json(err.message);
+    });
+});
+
+router.get("/units", (req, res) => {
+    Recipes.getUnits()
+    .then(quantities => {
+        res.status(200).json(quantities);
+    })
+    .catch(err => {
+        res.status(500).json(err.message);
+    });
+});
+
+
 
 
 
