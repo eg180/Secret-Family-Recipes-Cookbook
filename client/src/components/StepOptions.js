@@ -17,7 +17,17 @@ const StyledStepOptionsSection = styled.section`
             }
         }
     }
+    .bottom-button {
+        background-color: white;
+    }
     
+`
+const SubmitSection = styled.section`
+    background-color: green;
+    p {
+        padding: .25rem;
+        background-color: white;
+    }
 `
 
 export default function StepOptions(props) {
@@ -67,8 +77,15 @@ export default function StepOptions(props) {
                     <div><span id="cancel">❌</span></div>
                     <div><span id="add">✅</span></div>
                 </div>
-                    <div>SAVE</div>
             </StyledStepOptionsSection>
+            <SubmitSection>
+                <div>
+                    <p className="bottom-button">ADD STEP ➕</p>
+                </div>
+                <div>
+                    <p className="bottom-button">DONE <span id="save">💾</span></p>
+                </div>
+            </SubmitSection>
 
         </>
     )
