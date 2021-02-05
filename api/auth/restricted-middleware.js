@@ -12,7 +12,13 @@ module.exports = (req, res, next) => {
             } else {
                 // token is good and we can see the data inside the decoded token
                 req.jwt = decodedToken; // we now have access to it in req so we have access to data  / optional
-                next();
+                // console.log(decodedToken.role);
+                if (decodedToken.role === 1) {
+                    next()
+                } else {
+                    res.status(401).json({ you: "must be an admin to access this area" })
+                }
+                
             }
         })
  
