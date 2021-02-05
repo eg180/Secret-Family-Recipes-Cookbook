@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -45,7 +45,9 @@ const StyledButton = styled.button`
     border-radius: 10px;
 `
 
-export default function SignInBox() {
+export default function SignInBox(props) {
+
+    const { updateSignedInUserInApp } = props;
     
     
     let history = useHistory()
@@ -60,6 +62,14 @@ export default function SignInBox() {
             [e.target.name]: e.target.value
         });
     }
+
+    const updateSignedInUser = (u) => {
+        console.log('this is what will be sent to App')
+        // console.log(u)
+        updateSignedInUserInApp(u)
+
+
+    }
     
     const handleSubmitForm = (e) => {
         e.preventDefault()
@@ -68,9 +78,11 @@ export default function SignInBox() {
 
         axios.post('http://localhost:4000/api/auth/login', assumedUser)
         .then(res => {
+            console.log('got this res back:')
             console.log(res)
             // allows us to access username for the session
-            window.localStorage.setItem('user_username', res.data.user_username)
+            // window.localStorage.setItem('user_username', res.data.user_username)
+            updateSignedInUserInApp(res.data.user_username)
             history.push('/welcome');
             
             //wait with timeout
@@ -110,7 +122,7 @@ export default function SignInBox() {
                 
 
             </StyledDiv>
-            <div className="sub-text">Need an account? <span id="sign-up">Sign Up</span></div>
+            <div className="sub-text">Need an account? <span id="sign-up"><Link to={'/signup'}>Sign Up</Link></span></div>
 
         </PageContainerDiv>
     )

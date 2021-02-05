@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
+import SignOutBar from './components/SignOutBar';
 import SideBarRight from './components/SideBarRight';
 import RecipeSearch from './components/RecipeSearch';
 import LandingPage from './components/LandingPage';
@@ -27,7 +28,8 @@ const StyledSection = styled.div`
 function App() {
 
   const [hideSignIn, setHideSignIn] = useState(false);
-  const [fromApp, setFromApp] = useState('herp')
+  const [signedInUser, setSignedInUser] = useState('')
+
 
   useEffect(() => {
     // check to see if user in localstorage to see what components to hide/show
@@ -36,20 +38,33 @@ function App() {
       setHideSignIn(true)
     } else {
       console.log('no local storage found')
+      setHideSignIn(false)
     }
   }, []);
+
+  const updateSignedInUser = (u) => {
+    console.log('data received from SignInBox in App')
+    console.log(u)
+    setSignedInUser(u); // sets signed in user to state
+    setHideSignIn(true)
+    window.localStorage.setItem('user_username', u)
+  }
+
+  const signOutUser = () => {
+    setSignedInUser('');
+  }
 
   return (
     <div className="App">
       <Header />
       {hideSignIn && <RecipeSearch />}
-      {hideSignIn ? '' : <SignInBox />}
+      {signedInUser ? <SignOutBar signOutUser={signOutUser} /> : <SignInBox updateSignedInUserInApp={updateSignedInUser} />}
       <StyledSection>
         <Sidebar />
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route path="/signup" component={SignUp} />
-          <UserContext.Provider value={fromApp}>
+          <UserContext.Provider value={signedInUser}>
             <Route path="/welcome" component={Welcome} />
           </UserContext.Provider>
         </Switch>
