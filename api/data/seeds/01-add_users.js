@@ -8,7 +8,8 @@ exports.seed = function(knex) {
         {
           user_username: 'eg180',
           user_email: 'fakeemail@jenesaispas.com',
-          user_password: 'password',
+          user_role: 1,
+          user_password: 'password'
         }
       ]);
     });

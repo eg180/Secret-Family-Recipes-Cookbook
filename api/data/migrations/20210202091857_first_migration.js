@@ -1,4 +1,5 @@
 const tables = [
+  'roles',
   'users',
   'recipes',
   'ingredients',
@@ -14,6 +15,7 @@ const tables = [
 ]
 
 const [
+  roles,
   users,
   recipes,
   ingredients,
@@ -30,12 +32,23 @@ const [
 
 exports.up = async (knex) => {
   await knex.schema
+    .createTable(roles, (roles) => {
+      roles.increments('id')
+      roles.string('role_type')
+        .unique() 
+    })
     .createTable(users, (users) => {
       users.increments('user_id')
       users.string('user_username', 256).notNullable()
         .unique()
       users.string('user_email', 256).notNullable()
         .unique()
+      users.integer('user_role')
+        .unsigned()
+        .references('id')
+        .inTable('roles')
+        .onDelete('RESTRICT')
+        .onUpdate('RESTRICT')
       users.string('user_password', 128).notNullable()
       users.timestamps(false, true)
     })
