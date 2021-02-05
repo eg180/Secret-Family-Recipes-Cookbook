@@ -12,8 +12,15 @@ const StyledDiv = styled.div`
     #sidebar-title {
         padding: 2rem;
         background-color: #85baa1;
-        /* border-radius: 10px; */
     }
+`
+
+const CardDiv = styled.div`
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
 `
 
 function SideBarRight() {
@@ -39,13 +46,15 @@ function SideBarRight() {
         <>
             <StyledDiv>
                 <h3 id="sidebar-title">Latest secret recipes<span>🤫</span></h3>
-                {<ul>
-                    {!latestRecipes
-                    ? "Loading Recipes"
-                    : latestRecipes.map((recipe, index) => {
-                        return <RecipeCard key={index} recipe={recipe} /> 
-                    })}
-                </ul>}
+                <CardDiv>        
+                    {<ul>
+                        {!latestRecipes
+                        ? "Loading Recipes"
+                        : latestRecipes.map((recipe, index) => {
+                            return <RecipeCard key={index} recipe={recipe} /> 
+                        })}
+                    </ul>}
+                </CardDiv>
 
                 
                 
