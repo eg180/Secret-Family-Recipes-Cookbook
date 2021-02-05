@@ -39,7 +39,24 @@ exports.seed = function(knex) {
           recipe_id: 1,
           step_number: '7',
           step_instructions: 'Serve while hot as a main dish or side. The ratatouille is also excellent the next day--cover with foil and reheat in a 350˚F (180˚C) oven for 15 minutes, or simply microwave to desired temperature.'
-        }
+        },
+        {
+          recipe_id: 2,
+          step_number: '1',
+          step_instructions: 'Spread 1 tablespoon of jelly on 1 slice of bread'
+        },
+        {
+          recipe_id: 2,
+          step_number: '2',
+          step_instructions: 'Now you get 1 tablespoon peanut butter and spread it on the other slice of bread.'
+        },
+        {
+          recipe_id: 2,
+          step_number: '3',
+          step_instructions: 'Place one slice of bread on the other one, cut in half (if you like), and enjoy!'
+        },
+
+        
       ]);
     });
 };

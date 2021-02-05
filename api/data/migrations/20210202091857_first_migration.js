@@ -81,6 +81,7 @@ exports.up = async (knex) => {
         .onUpdate('RESTRICT')
       recipe_ingredients.integer('ingredient_id')
         .unsigned()
+        .notNullable()
         .references('ingredient_id')
         .inTable('ingredients')
         .onDelete('RESTRICT')

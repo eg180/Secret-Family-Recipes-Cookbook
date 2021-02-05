@@ -33,7 +33,7 @@ function SignUp() {
         .then(res => {
             console.log('below is the res before sending to welcome')
             console.log(res)
-            history.push("/welcome")
+
         })
         .catch(err => {
             console.log(err.message)

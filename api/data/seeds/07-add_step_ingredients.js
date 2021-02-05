@@ -84,7 +84,25 @@ exports.seed = function(knex) {
         {
           recipe_step_id: 5,
           ingredient_id: 1
+        },
+        {
+          recipe_step_id: 1,
+          ingredient_id: 21
+        },
+        {
+          recipe_step_id: 1,
+          ingredient_id: 22
+        },
+        {
+          recipe_step_id: 1,
+          ingredient_id: 21
+        },
+        {
+          recipe_step_id: 2,
+          ingredient_id: 23
         }
+
+
 
       ]);
     });

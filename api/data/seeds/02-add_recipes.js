@@ -8,6 +8,10 @@ exports.seed = function(knex) {
         {
           recipe_id: 1,
           recipe_name: 'ratatouille'
+        },
+                {
+          recipe_id: 2,
+          recipe_name: 'pb&j'
         }
       ]);
     });

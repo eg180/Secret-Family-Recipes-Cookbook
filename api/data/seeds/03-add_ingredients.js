@@ -24,7 +24,11 @@ exports.seed = function(knex) {
         {ingredient_name: 'yellow squash(es)'},
         {ingredient_name: 'zucchini(s)'},
         {ingredient_name: 'chopped fresh parsley'},
-        {ingredient_name: 'squash'}
+        {ingredient_name: 'squash'},
+        {ingredient_name: 'bread'},
+        {ingredient_name: 'jelly'},
+        {ingredient_name: 'peanut butter'}
+
 
 
       ]);

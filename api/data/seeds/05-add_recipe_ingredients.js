@@ -89,6 +89,24 @@ exports.seed = function(knex) {
           ingredient_id: 10,
           quantity: '2',
           unit: 8
+        },
+        {
+          recipe_id: 2,
+          ingredient_id: 21,
+          quantity: '2',
+          unit: 10
+        },
+        {
+          recipe_id: 2,
+          ingredient_id: 22,
+          quantity: '1',
+          unit: 2
+        },
+        {
+          recipe_id: 2,
+          ingredient_id: 23,
+          quantity: '1',
+          unit: 2
         }
         
         

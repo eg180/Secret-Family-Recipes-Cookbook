@@ -13,7 +13,8 @@ exports.seed = function(knex) {
         {unit: 'oz'},
         {unit: 'lb(s)'},
         {unit: 'teaspoon(s)'},
-        {unit: 'dollop(s)'}
+        {unit: 'dollop(s)'},
+        {unit: 'slice(s)'}
       ]);
     });
 };
