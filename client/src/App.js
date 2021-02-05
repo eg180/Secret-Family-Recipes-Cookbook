@@ -27,7 +27,6 @@ const StyledSection = styled.div`
 
 function App() {
 
-  const [hideSignIn, setHideSignIn] = useState(false);
   const [signedInUser, setSignedInUser] = useState('')
 
 
@@ -35,10 +34,11 @@ function App() {
     // check to see if user in localstorage to see what components to hide/show
     if (window.localStorage.getItem('user_username')) {
       console.log('there is user info saved in local storage / user logged in, so to speak')
-      setHideSignIn(true)
+      let u = window.localStorage.getItem('user_username')
+      setSignedInUser(u)
+
     } else {
       console.log('no local storage found')
-      setHideSignIn(false)
     }
   }, []);
 
@@ -46,7 +46,6 @@ function App() {
     console.log('data received from SignInBox in App')
     console.log(u)
     setSignedInUser(u); // sets signed in user to state
-    setHideSignIn(true)
     window.localStorage.setItem('user_username', u)
   }
 
@@ -56,20 +55,20 @@ function App() {
 
   return (
     <div className="App">
+    <UserContext.Provider value={signedInUser}>
       <Header />
-      {hideSignIn && <RecipeSearch />}
+      {signedInUser && <RecipeSearch />}
       {signedInUser ? <SignOutBar signOutUser={signOutUser} /> : <SignInBox updateSignedInUserInApp={updateSignedInUser} />}
       <StyledSection>
         <Sidebar />
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route path="/signup" component={SignUp} />
-          <UserContext.Provider value={signedInUser}>
-            <Route path="/welcome" component={Welcome} />
-          </UserContext.Provider>
+          <Route path="/welcome" component={Welcome} />
         </Switch>
-      <SideBarRight />
+        <SideBarRight />
       </StyledSection>
+    </UserContext.Provider>
     </div>
   );
 }

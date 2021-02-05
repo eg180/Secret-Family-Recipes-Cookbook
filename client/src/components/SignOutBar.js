@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory, Link } from 'react-router-dom';
+import { UserContext } from "../contexts/UserContext";
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -7,9 +8,10 @@ const PageContainerDiv = styled.div`
     .sub-text {
         background-color: #e2d4ba;
         display: flex;
+        flex-direction: column;
         justify-content: flex-end;
         padding-right: 5rem;
-        padding-bottom: .5rem;
+        /* padding-bottom: .5rem; */
         font-size: .9rem;
     }
     #logout {
@@ -20,13 +22,21 @@ const PageContainerDiv = styled.div`
 
 const StyledDiv = styled.div`
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
     padding-right: 3rem;
     background-color: green;
-    padding-bottom: 1.5rem;
+    /* padding-bottom: 1.5rem; */
     align-items: flex-end;
     background-color: #e2d4ba;
     min-height: 10vh;
+    #sub-text {
+        background-color: #e2d4ba;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 5rem;
+        padding-bottom: .5rem;
+        font-size: .9rem;
+    }
     input {
         margin-left: 1rem;
         /* margin-bottom: 1rem; */
@@ -48,6 +58,8 @@ const StyledButton = styled.button`
 export default function SignOutBar(props) {
     const { signOutUser } = props;
 
+    const signedInUser = useContext(UserContext);
+
     let history = useHistory()
 
     const handleSignOut = () => {
@@ -60,7 +72,15 @@ export default function SignOutBar(props) {
     return (
         <PageContainerDiv>
             <StyledDiv>
-                <StyledButton onClick={handleSignOut}>Sign Out</StyledButton>
+                {/*<div>
+                    <StyledButton onClick={handleSignOut}>Sign Out</StyledButton>
+                </div>*/}
+                <div>
+                    <span id="sub-text">You are signed in as {signedInUser}</span>
+                </div>
+                <div>
+                    <span id="sub-text"><Link onClick={handleSignOut}>Sign out?</Link></span>
+                </div>
             </StyledDiv>
         </PageContainerDiv>
     )
