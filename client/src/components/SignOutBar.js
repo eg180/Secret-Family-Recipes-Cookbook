@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const PageContainerDiv = styled.div`
     .sub-text {
-        background-color: #e2d4ba;
+        background-color: #fec5bb;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -24,13 +24,12 @@ const StyledDiv = styled.div`
     display: flex;
     flex-direction: column;
     padding-right: 3rem;
-    background-color: green;
+    background-color: #85baa1;
     /* padding-bottom: 1.5rem; */
     align-items: flex-end;
-    background-color: #e2d4ba;
+    background-color: #fec5bb;
     min-height: 10vh;
     #sub-text {
-        background-color: #e2d4ba;
         display: flex;
         justify-content: flex-end;
         padding-right: 5rem;
@@ -45,7 +44,7 @@ const StyledDiv = styled.div`
 `
 
 const StyledButton = styled.button`
-    background-color: #f1e3e4;
+    background-color: #fec5bb;
     border: none;
     padding-left: 3rem;
     padding-right: 3rem;
@@ -76,7 +75,7 @@ export default function SignOutBar(props) {
                     <StyledButton onClick={handleSignOut}>Sign Out</StyledButton>
                 </div>*/}
                 <div>
-                    <span id="sub-text">You are signed in as {signedInUser}</span>
+                    <span id="sub-text">Hi, {signedInUser}.</span>
                 </div>
                 <div>
                     <span id="sub-text"><Link onClick={handleSignOut}>Sign out?</Link></span>

@@ -57,8 +57,9 @@ function App() {
     <div className="App">
     <UserContext.Provider value={signedInUser}>
       <Header />
+        {signedInUser && <SignOutBar signOutUser={signOutUser} />}
       {signedInUser && <RecipeSearch />}
-      {signedInUser ? <SignOutBar signOutUser={signOutUser} /> : <SignInBox updateSignedInUserInApp={updateSignedInUser} />}
+      {!signedInUser && <SignInBox updateSignedInUserInApp={updateSignedInUser} />}
       <StyledSection>
         <Sidebar />
         <Switch>

@@ -7,7 +7,8 @@ const StyledDiv = styled.div`
     justify-content: space-around;
     align-items: flex-end;
     background-color: #e2d4ba;
-    min-height: 10vh;
+    background-color: white;
+    /* min-height: 10vh; */
     input {
         margin-left: 1rem;
         /* margin-bottom: 1rem; */
@@ -18,6 +19,18 @@ const StyledDiv = styled.div`
     }
     .marquee {
     }
+    #plus {
+        background-color: #caffbf;
+        color: white;
+        border-color: purple;
+        padding: .25rem;
+        margin: .50rem;
+        border-radius: 20%;
+        :hover {
+            background-color: #80ffdb;
+            cursor: pointer;
+        }
+    }
 `
 
 function RecipeSearch() {
@@ -27,15 +40,15 @@ function RecipeSearch() {
                 <span class="marquee">Random Recipe</span>
             </div>
             <div>
-                <span class="marquee">Find your recipe</span>
-
-            </div>
-            
-            <div>
                 <span id="search">Find your recipe</span>
                 <input
                 />
             </div>
+            <div>
+                <span class="marquee">Add a recipe</span><span id="plus">➕</span>
+
+            </div>
+            
         </StyledDiv>
     )
 }
