@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import RecipeDialog from './RecipeDialog';
 
 const StyledDiv = styled.div`
     padding-bottom: 1.5rem;
@@ -34,22 +35,36 @@ const StyledDiv = styled.div`
 `
 
 function RecipeSearch() {
-    return (
-        <StyledDiv>
-            <div>
-                <span class="marquee">Random Recipe</span>
-            </div>
-            <div>
-                <span id="search">Find your recipe</span>
-                <input
-                />
-            </div>
-            <div>
-                <span class="marquee">Add a recipe</span><span id="plus">➕</span>
 
+    const [clicked, setClicked] = useState(false)
+
+    const toggleDialog = () => {
+        setClicked(!clicked)
+    }
+
+
+
+    return (
+        <>
+
+            <StyledDiv>
+                <div>
+                    <span class="marquee">Random Recipe</span>
+                </div>
+                <div>
+                    <span id="search">Find your recipe</span>
+                    <input
+                    />
+                </div>
+                <div>
+                    <span class="marquee">Add a recipe</span><span id="plus" onClick={toggleDialog}>➕</span>
+                </div>      
+            </StyledDiv>
+            <div>
+                {clicked && <RecipeDialog />}
             </div>
-            
-        </StyledDiv>
+
+        </>
     )
 }
 

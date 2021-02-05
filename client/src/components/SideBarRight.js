@@ -11,7 +11,7 @@ const StyledDiv = styled.div`
     /* max-width: 30vh; */
     #sidebar-title {
         padding: 2rem;
-        background-color: #85baa1;
+        background-color: #e6ccb2;
     }
 `
 
